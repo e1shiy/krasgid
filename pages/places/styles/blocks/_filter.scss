@@ -1,0 +1,103 @@
+.filter {
+    position: relative;
+
+    &:nth-child(2) > &__body { // district filter
+        @include mobile {
+            left: 0;
+            translate: 0 5px;
+        }
+
+        @include mobile-s {
+            left: 50%;
+            translate: -50% 5px;
+        }
+    }
+
+    &__header {
+        transition-duration: var(--transition-duration);
+
+        &--active {
+            color: var(--color-light);
+            background-color: var(--color-dark);
+            
+            @include hover {
+                text-shadow: var(--text-shadow-thin);
+            }
+        }
+    }
+
+    &__body {
+        @include flex-center;
+        
+        display: none;
+        opacity: 1;
+
+        flex-direction: column;
+        gap: 20px;
+
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        translate: -50% 5px;
+
+        font-family: var(--font-family-alt);
+        padding: 30px 50px;
+        border: var(--border-width-regular) solid var(--color-dark);
+        border-radius: var(--border-radius-double);
+
+        color: var(--color-dark);
+        background-color: var(--color-light-grey-alt);
+
+        transition: opacity var(--transition-duration);
+        z-index: 3;
+
+        @include tablet {
+            gap: 15px;
+            padding: 20px 30px;
+        }
+
+        @include mobile {
+            gap: 10px;
+            padding: 15px 20px;
+        }
+
+        &--closed {
+            opacity: 0;
+        }
+    }
+
+    &__option {
+        &-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            @include mobile {
+                gap: 5px;
+            }
+
+            &--gap-large {
+                gap: 30px;
+
+                @include tablet {
+                    gap: 20px;
+                }
+
+                @include mobile {
+                    gap: 10px;
+                }
+            }
+        }
+    }
+}
+
+button.filter {
+    &--active {
+        color: var(--color-light);
+        background-color: var(--color-dark);
+
+        @include hover {
+            text-shadow: var(--text-shadow-thin);
+        }
+    }
+}

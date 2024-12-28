@@ -1,0 +1,16 @@
+:root {
+    --section-padding-x: 50px;
+    --section-padding-y: 140px;
+
+    @include desktop-l {
+        --section-padding-y: 120px;
+    }
+
+    @include tablet {
+        --section-padding-y: 100px;
+    }
+
+    @include mobile {
+        --section-padding-y: 40px;
+    }
+}

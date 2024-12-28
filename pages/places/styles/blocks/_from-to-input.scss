@@ -1,0 +1,78 @@
+.from-to-input {
+    @include flex-center;
+
+    gap: 30px;
+
+    @include tablet {
+        gap: 20px;
+    }
+    
+    @include mobile {
+        gap: 10px;
+    }
+
+    &__from, &__to {
+        width: var(--price-input-width);
+        aspect-ratio: 2;
+        
+        text-align: center;
+        border: var(--border-width-light) solid var(--color-dark);
+        border-radius: var(--border-radius-mini);
+
+        appearance: textfield;
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+
+        &--disabled {
+            cursor: not-allowed;
+            background-color: var(--color-grey);
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        &-wrapper {
+            position: relative;
+
+            &::before {  
+                content: attr(data-before);
+                width: max-content;
+
+                position: absolute;
+                left: var(--border-radius-mini);
+                top: 2px;
+                translate: 0 -100%;
+                
+                color: currentColor;
+                font-weight: 400;
+                font-family: var(--font-family-base);
+                font-size: 15px;
+
+                @include mobile {
+                    font-size: 8px;
+                    top: 1px;
+                }
+
+                @include mobile-s {
+                    font-size: 6px;
+                }
+            }
+        }
+    }
+
+    &__to-wrapper::before {
+        content: attr(data-before);
+        left: calc(100% - var(--border-radius-mini));
+        translate: -100% -100%;
+    }
+
+    &__separator {
+        width: var(--price-input-separator-width);
+        aspect-ratio: 5;
+
+        background-color: var(--color-dark);
+    }
+}

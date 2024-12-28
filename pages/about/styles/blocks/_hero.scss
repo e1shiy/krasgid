@@ -1,0 +1,130 @@
+.hero {
+    font-family: var(--font-family-alt);
+
+    &__body {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+
+        gap: min(calc(50px + 80 * ((100vw - 1024px) / 896)), 130px); // 50px gap to 130px gap (1024px => 1920px)
+
+        @include tablet {
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        @include mobile {
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+
+    &__intro {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 40px;
+
+        @include desktop {
+            gap: 30px;
+        }
+
+        @include tablet {
+            align-items: center;
+            gap: calc(30px + 20 * ((100vw - 768px) / 256)); // 30px gap to 50px gap (768px => 1024px)
+
+            text-align: center;
+        }
+
+        @include mobile {
+            display: contents;
+        }
+
+        &-text {
+            max-width: 670px;
+            flex-shrink: 1;
+
+            @include mobile {
+                order: 1;
+                max-width: 500px;
+                margin-bottom: 20px;
+            }
+
+            @include mobile-s {
+                max-width: 310px;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+
+        &-link {
+            @include mobile {
+                order: 3;
+            }
+        }
+
+        &-button {
+            font-weight: 600;
+
+            @include mobile {
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__tutorial {
+        position: relative;
+
+        @include mobile {
+            order: 2;
+        }
+    }
+
+    &__video {
+        &-wrapper {
+            position: relative;
+            max-width: 670px;
+            aspect-ratio: 16 / 9;
+
+            flex-shrink: 2;
+
+            border: var(--border-width-black) solid var(--color-dark);
+            border-radius: var(--border-radius-huge);
+
+            background-color: var(--color-dark);
+            overflow: hidden;
+
+            @include tablet {
+                max-width: 600px;
+            }
+
+            @include mobile {
+                max-width: 500px;
+            }
+
+            @include mobile-s {
+                max-width: 310px;
+            }
+        }
+
+        translate: -1px -1px; // чтобы точно не было дырок по краям
+        width: calc(100% + 1px); // чтобы точно не было дырок по краям
+        aspect-ratio: 16 / 9;
+        
+        transition-duration: var(--transition-duration);
+
+        @include hover {
+            opacity: .9
+        }
+    }
+
+    &__fullscreen-button {
+        position: absolute;
+        top: 100%;
+        right: var(--border-radius-huge);
+    }
+}

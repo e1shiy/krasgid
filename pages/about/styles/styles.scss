@@ -1,0 +1,20 @@
+@import
+    '../../../styles/normalize',
+    '../../../styles/fonts',
+    '../../../styles/mixins',
+    '../../../styles/global-variables',
+    '../../../styles/globals',
+    '../../../styles/utils',
+    '../../../styles/blocks/button',
+    '../../../styles/blocks/dropmenu',
+    '../../../styles/blocks/close-button',
+    '../../../styles/blocks/header';
+
+@import
+    './variables',
+    './blocks/content',
+    './blocks/section',
+    './blocks/hero',
+    './blocks/fullscreen-button',
+    './blocks/footer',
+    './blocks/fullscreen-video-overlay';

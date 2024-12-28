@@ -1,0 +1,77 @@
+.filters {
+    display: grid;
+    grid-template-areas: 'title district price days roundTheClock reset';
+
+    column-gap: 30px;
+
+    @include desktop-l {
+        column-gap: 20px;
+    }
+
+    @include desktop {
+        grid-template-areas:
+        'title title title title'
+        'district price days roundTheClock'
+        'reset reset reset reset';
+
+        max-width: 800px;
+
+        gap: 20px 30px;
+    }
+
+    @include mobile {
+        gap: 15px calc(8px + 12 * ((100vw - 480px) / 288)); // 15px and 8px => 20px (480px => 768px)
+    }
+
+    @include mobile-s {
+        grid-template-areas: 
+        'title title'
+        'district price'
+        'days roundTheClock'
+        'reset reset';
+
+        gap: 10px 15px;
+    } 
+
+    &__title {
+        grid-area: title;
+    }
+
+    &__filter {
+        &:nth-child(2) {
+            grid-area: district;
+
+            @include desktop-l-above {
+                margin-left: 10px;
+            }
+            
+            @include desktop-above {
+                margin-left: 5px;
+            }
+        }
+
+        &:nth-child(3) {
+            grid-area: price;
+        }
+
+        &:nth-child(4) {
+            grid-area: days;
+        }
+
+        &:nth-child(5) {
+            grid-area: roundTheClock;
+
+            @include desktop-l-above {
+                margin-right: 10px;
+            }
+
+            @include desktop-above {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    &__reset-button {
+        grid-area: reset;
+    }
+}

@@ -1,0 +1,19 @@
+:root {
+    --section-padding-y: 40px;
+
+    --price-input-width: 60px;
+    --price-input-separator-width: 10px;
+
+    @include tablet {
+        --section-padding-y: 50px;
+    }
+
+    @include mobile {
+        --price-input-width: 40px;
+        --price-input-separator-width: 5px;
+    }
+
+    @include mobile-s {
+        --section-padding-y: 30px;
+    }
+}
