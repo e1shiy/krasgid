@@ -98,7 +98,16 @@ function setLanguage(choise) {
     document.querySelector('.from-to-input__to-wrapper').setAttribute('data-before', language.to)
 
     document.querySelector('.search__input').setAttribute('placeholder', language.search)
-} // dodelat'
+
+    document.querySelectorAll('.place').forEach(place => {
+        console.log(place.dataset.number, places[place.dataset.number])
+        if (choise === 'english') { language = Object.assign({}, places[place.dataset.number].english) }
+        else if (choise === 'русский') { language = Object.assign({}, places[place.dataset.number].russian) }
+
+        place.querySelector('.place__info-title h4').textContent = language.title
+        place.querySelector('.place__info-description p').innerHTML = language.workingDaysText + '<br>' + language.workingHoursText + '<br>' + language.entryCostText
+    })
+}
 
 
 
@@ -111,7 +120,7 @@ const places = [
             workingHoursText: 'Mo-Fr: 10:00 - 21:00, Sa-Su: 10:00 - 22:00'
         },
         russian: {
-            title: 'Национальный заповедник  "Столбы"',
+            title: 'Национальный заповедник "Столбы"',
             entryCostText: 'Вход бесплатный, услуги от 200 рублей',
             workingDaysText: 'Работает ежедневно',
             workingHoursText: 'Пн-Пт: 10:00 - 21:00, Сб-Вс: 10:00 - 22:00'
@@ -147,15 +156,16 @@ const places = [
             isRoundTheClock: true,
         },
         isFirst: false,
-        imagePath: "../../images/test.jpg",
+        imagePath: "../../images/hps.jpg",
         URL: document.URL + "#"
     }
 ]
 
-function createAPlace(place) {
+function createAPlace(place, number) {
     const container = document.createElement('li')
     container.classList.add('places__item')
     container.classList.add('place')
+    container.dataset.number = number
 
     const wayWrapper = document.createElement('div')
     wayWrapper.classList.add('place__background-way')
@@ -222,7 +232,7 @@ function createAPlace(place) {
 
     // добавление инфы в фильтры // upd 12/27/24: ???
 }
-places.forEach(place => createAPlace(place))
+places.forEach((place, index) => createAPlace(place, index))
 
 const filtersDefault = {
     search: '',
@@ -237,19 +247,38 @@ function changeFilter(name, value) {
     switch (name) {
         case ('search'):
             filters.search = value
-            return
+            break
         case ('district'):
             filters.district = value
-            return
+            break
         case ('entryCost'):
             filters.entryCost = value
-            return
+            break
         case ('workingDays'):
             filters.workingDays = value
-            return
+            break
         case ('isRoundTheClock'):
             filters.isRoundTheClock = value
-            return
+            break
+    }
+
+    const searchValue = filters.search
+    delete filters['search']
+    delete filtersDefault['search']
+
+    const isDefault = JSON.stringify(filters) === JSON.stringify(filtersDefault)
+    const resetAllButton = document.getElementById('resetFiltersButton')
+
+    filters['search'] = searchValue
+    filtersDefault['search'] = ''
+
+    if (!isDefault && resetAllButton.classList.contains('button--disabled')) {
+        resetAllButton.classList.remove('button--disabled')
+        resetAllButton.removeAttribute('disabled')
+    }
+    else if (isDefault && !resetAllButton.classList.contains('button--disabled')) {
+        resetAllButton.classList.add('button--disabled')
+        resetAllButton.setAttribute('disabled', true)
     }
 }
 
@@ -339,7 +368,7 @@ filtersList.forEach(filter => {
                         priceFromInput.classList.add('from-to-input__from--disabled')
                         priceToInput.classList.add('from-to-input__to--disabled')
 
-                        changeFilter('entryCost', [0, 10e6])
+                        changeFilter('entryCost', [0, 0])
                     } else {
                         priceFromInput.removeAttribute('disabled')
                         priceToInput.removeAttribute('disabled')
@@ -441,7 +470,7 @@ function renderPlaces() {
     const placesList = document.querySelectorAll('.place')
     placesList.forEach(place => place.remove())
 
-    places.forEach(place => {
+    places.forEach((place, index) => {
         const { district, entryCost, workingDays, isRoundTheClock } = place.filters
 
         const isDistrict = filters.district.length === 0 ? true : filters.district.includes(district)
@@ -449,12 +478,13 @@ function renderPlaces() {
         const isWorkingDays = filters.workingDays.length === 0 ? true : filters.workingDays.every(value => workingDays.includes(value))
         const isAroundTheClock = isRoundTheClock >= filters.isRoundTheClock
 
-        const searchWords = filters.search.toLowerCase().split(' ')
-        const title = localStorage.getItem('language') === 'english' ? place.english.title.toLowerCase().split(' ') : place.russian.title.toLowerCase().split(' ')
+        handleString = (str) => str.replace(/[^a-zA-Zа-яА-ЯёЁ0-9\s]/g, "").trim().toLowerCase().split(' ')
+        const searchWords = handleString(filters.search)
+        const title = localStorage.getItem('language') === 'english' ? handleString(place.english.title) : handleString(place.russian.title)
         const isSearch = searchWords.every(searchWord => title.some(titleWord => titleWord.indexOf(searchWord) === 0))
         
         if (isDistrict && isEntryCost && isWorkingDays && isAroundTheClock && isSearch) {
-            createAPlace(place)
+            createAPlace(place, index)
         }
     })
     hideOrShowPlacesBackgrounds()

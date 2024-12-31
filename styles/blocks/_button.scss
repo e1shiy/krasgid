@@ -54,6 +54,19 @@
         }
     }
 
+    &--disabled {
+        cursor: not-allowed;
+        color: var(--color-grey-alt);
+        background-color: var(--color-grey);
+
+        @include hover {
+            color: var(--color-grey-alt);
+            background-color: var(--color-grey);
+
+            text-shadow: none;
+        }
+    }
+
     img {
         position: relative;
         top: 1px;
