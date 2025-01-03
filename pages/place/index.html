@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/icons/tab-icon.png">
+    <title>КрасГид | Места</title>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="../../app.js" defer></script>
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="header__inner container">
+            <a href="../about/index.html" class="header__logo">
+                <img src="../../images/logo.png" alt="KrasGid" class="logo" width="193" height="94" loading="lazy">
+            </a>
+
+            <nav class="header__menu">
+                <ul class="header__menu-list">
+                    <li class="header__menu-item">
+                        <a href="../places/index.html" class="header__menu-link">
+                            <button class="header__menu-button button cursor-pointer id="placesButton" type="button">
+                                <p>Места</p>
+                            </button>
+                        </a>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <a href="../about/index.html" class="header__menu-link">
+                            <button class="header__menu-button button cursor-pointer" id="aboutUsButton" type="button">
+                                <p>О нас</p>
+                            </button>
+                        </a>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <div class="header__menu-dropmenu dropmenu" data-number="1">
+                            <button class="dropmenu__header">
+                                <div class="dropmenu__header-title">
+                                    <p>Language</p>
+                                </div>
+
+                                <img src="../../images/icons/planet.png" alt="" class="dropmenu__header-icon" width="16"
+                                    height="16" loading="lazy">
+                            </button>
+
+                            <div class="dropmenu__body">
+                                <ul class="dropmenu__body-list">
+                                    <li class="dropmenu__body-item">
+                                        <button class="dropmenu__body-option button">
+                                            <p>English</p>
+                                        </button>
+                                    </li>
+
+                                    <li class="dropmenu__body-item">
+                                        <button class="dropmenu__body-option button">
+                                            <p>Русский</p>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="section container">
+            <div class="section__body">
+                <div class="place">
+                    <div class="place__header">
+                        <div class="place__slider">
+                            <div class="place__slider-image-wrapper">
+                                <img src="../../images/hps.jpg" width="570" height="321" loading="lazy" class="place__slider-image">
+                            </div>
+
+                            <div class="place__slider-slider slider">
+                                <div class="slider__button-up">
+                                    <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d_255_148)">
+                                        <path d="M12.1829 1.15788C12.5813 0.593287 13.4187 0.593287 13.8171 1.15788L21.4138 11.9234C21.8812 12.5859 21.4075 13.5 20.5967 13.5H5.40328C4.59253 13.5 4.11878 12.5859 4.58622 11.9234L12.1829 1.15788Z" fill="black"/>
+                                        </g>
+                                    </svg>                                        
+                                </div>
+
+                                <ul class="slider__images-list">
+                                    <li class="slider__images-item slider__images-item--chosen">
+                                        <img src="../../images/hps.jpg" width="110" height="66" loading="lazy">
+                                    </li>
+
+                                    <li class="slider__images-item">
+                                        <img src="../../images/hps.jpg" width="110" height="66" loading="lazy">
+                                    </li>
+
+                                    <li class="slider__images-item">
+                                        <img src="../../images/hps.jpg" width="110" height="66" loading="lazy">
+                                    </li>
+
+                                    <li class="slider__images-item">
+                                        <img src="../../images/hps.jpg" width="110" height="66" loading="lazy">
+                                    </li>
+
+                                    <li class="slider__images-item">
+                                        <img src="../../images/hps.jpg" width="110" height="66" loading="lazy">
+                                    </li>
+
+                                    <li class="slider__images-item">
+                                        <img src="../../images/hps.jpg" width="110" height="66" loading="lazy">
+                                    </li>
+                                </ul>
+
+                                <div class="slider__button-down">
+                                    <svg width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d_255_148)">
+                                        <path d="M12.1829 1.15788C12.5813 0.593287 13.4187 0.593287 13.8171 1.15788L21.4138 11.9234C21.8812 12.5859 21.4075 13.5 20.5967 13.5H5.40328C4.59253 13.5 4.11878 12.5859 4.58622 11.9234L12.1829 1.15788Z" fill="black"/>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="place__description">
+                            <div class="place__description-title">
+                                <p class="h1">
+                                    Lorem ipsum dolor sit
+                                </p>
+                            </div>
+
+                            <ul class="place__description-list">
+                                <li class="place__description-item">
+                                    <span class="place__description-marker bullet"></span>
+                                    <span class="place__description-title">Рабочие дни:</span>
+                                    <span class="place__description-info">dolor sit amet</span>
+                                </li>
+                                
+                                <li class="place__description-item">
+                                    <span class="place__description-marker bullet"></span>
+                                    <span class="place__description-title">Часы работы:</span>
+                                    <span class="place__description-info">dolor sit</span>
+                                </li>
+
+                                <li class="place__description-item">
+                                    <span class="place__description-marker bullet"></span>
+                                    <span class="place__description-title">Стоимость входа:</span>
+                                    <span class="place__description-info">dolor sit amet consectetur. Elementum</span>
+                                </li>
+
+                                <li class="place__description-item">
+                                    <span class="place__description-marker bullet"></span>
+                                    <span class="place__description-title">Адрес (<button class="place__description-explanation explanatory-button" id="addressExplanationButton">при наличии</button>):</span>
+                                    <span class="place__description-info">78 dolor sit amet consecteur elementum</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="place__body">
+                        <div class="place__body-text">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur. Sit nisl id senectus convallis sit sit posuere facilisi nam. Sed sit enim sed ornare nulla in semper. Turpis amet eu mi suspendisse. Donec nascetur quam in sodales dolor eget neque sapien metus. At sed nisl blandit vulputate eu tincidunt est. Mi integer sit est pellentesque eu.
+                            </p>
+    
+                            <p>
+                                Faucibus cursus laoreet magna quis tincidunt aliquet. Praesent mi nunc urna sit egestas. Nunc posuere elementum sed tempus. At quis sodales sollicitudin quisque tempus tempor. Lorem at enim amet sed vitae posuere. Nisl neque et scelerisque consectetur elit. Augue tristique vitae convallis volutpat imperdiet pharetra. Urna duis turpis diam nisl integer. Eu lacinia nunc et turpis donec purus. Elit porta id nunc aenean ac scelerisque cras condimentum at. Diam facilisis quis id amet pellentesque ridiculus aliquam. Adipiscing amet nec donec tellus in. Amet ipsum euismod cras tincidunt sodales tempor habitant.
+                            </p>
+    
+                            <p>
+                                Egestas nibh scelerisque eget posuere varius faucibus faucibus mauris. Ornare vulputate eget dui neque. Tellus dolor mi mollis aliquam commodo. Quis tincidunt dolor facilisis laoreet consectetur et viverra semper mattis. Malesuada libero ut sed ac. Tellus donec velit non lobortis ultricies pharetra ut in. Rutrum id neque diam mauris nec interdum. Pellentesque pellentesque ipsum penatibus malesuada facilisis. Neque dis aliquet iaculis magna et quisque sollicitudin eget viverra. Amet cursus ultrices amet odio suscipit. Posuere elit posuere pharetra consequat velit nulla ut.
+                            </p>
+                            
+                            <p>
+                                Neque nunc id maecenas aliquet pellentesque morbi id sed habitant. Et amet turpis ultrices et massa. Molestie velit nunc eget ac.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

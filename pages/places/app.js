@@ -133,7 +133,7 @@ const places = [
         },
         isFirst: true,
         imagePath: "../../images/test.jpg",
-        URL: document.URL + "#"
+        URL: document.URL.split('places/index.html')[0] + "place/index.html" // temp
     },
 
     { // гэс
@@ -157,7 +157,7 @@ const places = [
         },
         isFirst: false,
         imagePath: "../../images/hps.jpg",
-        URL: document.URL + "#"
+        URL: document.URL.split('places/index.html')[0] + "place/index.html" // temp
     }
 ]
 

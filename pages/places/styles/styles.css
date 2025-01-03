@@ -202,10 +202,12 @@ svg * {
   --color-dark: #000;
   --color-grey: #e0e0e0;
   --color-grey-alt: #646464;
+  --color-grey-alt-2: #b7b7b7;
   --color-light-grey: #f9f9f9;
   --color-light-grey-alt: #fffdfd;
   --border: 3px solid black;
   --border-width-black: 7px;
+  --border-width-verybold: 5px;
   --border-width-bold: 3px;
   --border-width-regular: 2px;
   --border-width-light: 1px;
@@ -233,6 +235,7 @@ svg * {
 @media (max-width: 1280px) {
   :root {
     --border-width-black: 6px;
+    --border-width-verybold: 4px;
     --border-radius-huge: 70px;
   }
 }
@@ -252,6 +255,7 @@ svg * {
 }
 @media (max-width: 767px) {
   :root {
+    --border-width-verybold: 3px;
     --border-width-black: 2px;
     --border-width-bold: 1px;
     --border-width-regular: 1px;
@@ -325,6 +329,30 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   padding: 0;
   margin: 0;
+}
+
+h1, .h1 {
+  font-size: max(32px, 30px + 2 * (100vw - 1280px) / 640);
+}
+@media (max-width: 1280px) {
+  h1, .h1 {
+    font-size: calc(27px + 3 * (100vw - 1024px) / 256);
+  }
+}
+@media (max-width: 1023px) {
+  h1, .h1 {
+    font-size: calc(22px + 5 * (100vw - 768px) / 256);
+  }
+}
+@media (max-width: 767px) {
+  h1, .h1 {
+    font-size: calc(17px + 5 * (100vw - 480px) / 288);
+  }
+}
+@media (max-width: 480px) {
+  h1, .h1 {
+    font-size: 17px;
+  }
 }
 
 h2, .h2 {

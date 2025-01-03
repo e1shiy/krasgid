@@ -47,9 +47,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-// h1, .h1 {
-//     @include fluid-text();
-// }
+h1, .h1 {
+    @include fluid-text(32, 30, 27, 22, 17);
+}
 
 h2, .h2 {
     @include fluid-text(29, 27, 25, 20, 15);

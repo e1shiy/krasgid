@@ -3,12 +3,14 @@
     --color-dark: #000;
     --color-grey: #e0e0e0;
     --color-grey-alt: #646464;
+    --color-grey-alt-2: #b7b7b7;
     --color-light-grey: #f9f9f9;
     --color-light-grey-alt: #fffdfd;
 
     --border: 3px solid black;
 
     --border-width-black: 7px;
+    --border-width-verybold: 5px;
     --border-width-bold: 3px;
     --border-width-regular: 2px;
     --border-width-light: 1px;  
@@ -44,6 +46,7 @@
 
     @include desktop {
         --border-width-black: 6px;
+        --border-width-verybold: 4px;
 
         --border-radius-huge: 70px;
     }
@@ -51,20 +54,21 @@
     @include tablet {
         --border-width-black: 5px;
         --border-width-bold: 2px;
-
+        
         --border-radius-huge: 60px;
         --border-radius-large: 40px;
         --border-radius-double: 15px;
         --border-radius: 8px;
-
+        
         --button-height: 38px;
         --button-height-large: 57px;
-
+        
         --header-padding-x: calc(50px + 80 * ((100vw - 767px) / 257));
         --header-padding-top: 40px;
     }
-
+    
     @include mobile {
+        --border-width-verybold: 3px;
         --border-width-black: 2px;
         --border-width-bold: 1px;
         --border-width-regular: 1px;
