@@ -1,0 +1,18 @@
+@import
+    '../../../styles/normalize',
+    '../../../styles/fonts',
+    '../../../styles/mixins',
+    '../../../styles/global-variables',
+    '../../../styles/globals',
+    '../../../styles/utils',
+    '../../../styles/blocks/button',
+    '../../../styles/blocks/dropmenu',
+    '../../../styles/blocks/close-button',
+    '../../../styles/blocks/header';
+
+@import
+    './variables',
+    './blocks/section',
+    './blocks/place',
+    './blocks/slider',
+    './blocks/explanatory-button';

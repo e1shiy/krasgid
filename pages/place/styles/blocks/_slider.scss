@@ -1,0 +1,166 @@
+.slider {
+    --sliderHeight: 331px;
+    --sliderWidth: calc(var(--sliderHeight) / 331 * 110);
+    // --sliderWidth: 110px;
+    --sliderBorderWidth: 2px;
+
+    width: var(--sliderWidth);
+    height: var(--sliderHeight);
+
+    border: var(--sliderBorderWidth) solid var(--color-dark);
+    border-radius: var(--border-radius-double);
+    background-color: var(--color-dark);
+
+    overflow: scroll; // temp
+    // overflow: hidden;
+
+    @include desktop {
+        --sliderWidth: 91px;
+        --sliderHeight: 275px;
+    }
+
+    @include mobile {
+        --sliderHeight: 76px;
+        --sliderWidth: calc(var(--sliderHeight) / 76 * 407);
+        // --sliderWidth: 407px;
+
+        display: flex;
+    }
+
+    @include mobile-s {
+        --sliderHeight: 50px;
+        --sliderBorderWidth: 1px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__button-up, &__button-down {
+        --sliderButtonArrowHeight: 22px;
+        --sliderButtonHeight: calc(21px + var(--sliderButtonArrowHeight));
+
+        --sliderButtonHoverColor: #b7b7b7;
+        --sliderButtonActiveColor: #949494;
+
+        position: sticky;
+
+        display: flex;
+        justify-content: center;
+        height: var(--sliderButtonHeight);
+
+        background-color: var(--color-grey);
+
+        transition-duration: var(--transition-duration);
+        z-index: 1;
+
+        @include hover {
+            background-color: var(--sliderButtonHoverColor);
+        }
+
+        @include desktop {
+            --sliderButtonArrowHeight: 20px;
+            --sliderButtonHeight: calc(17px + var(--sliderButtonArrowHeight));
+        }
+
+        @include mobile-above {
+            border-bottom: var(--border-width-light) solid var(--color-dark);
+        }
+
+        @include mobile {
+            --sliderButtonArrowHeight: 15px;
+            --sliderButtonHeight: calc(11px + var(--sliderButtonArrowHeight));
+
+            height: 100%;
+            align-items: center;
+
+            border-right: var(--border-width-light) solid var(--color-dark);
+        }
+
+        &:active {
+            background-color: var(--sliderButtonActiveColor);
+        }
+
+        svg {
+            height: var(--sliderButtonArrowHeight);
+            translate: 0 13px;
+            
+            @include desktop {
+                translate: 0 11px;
+            }
+
+            @include mobile {
+                rotate: -90deg;
+                translate: 2px 0;
+            }
+        }
+    }
+
+    &__button-up {
+        @include mobile-above {
+            top: 0;
+        }
+
+        @include mobile {
+            left: 0;
+        }
+    }
+
+    &__button-down {
+        rotate: 180deg;
+        
+        @include mobile-above {
+            bottom: 0;
+        }
+
+        @include mobile {
+            right: 0;
+        }
+    }
+
+    &__images {
+        &-list {
+            @include mobile {
+                display: flex;
+            }
+        }
+
+        &-item {
+            flex-shrink: 0;
+            aspect-ratio: 16 / 9;
+            height: 100%;
+            transition-duration: var(--transition-duration);
+            
+            @include hover {
+                opacity: .8;
+            }
+
+            &:active {
+                opacity: .6;
+            }
+
+            @include mobile-above {
+                border-block: var(--border-width-light) solid var(--color-dark);
+            }
+
+            @include mobile-s-above {
+                border-inline: var(--border-width-light) solid var(--color-dark);
+            }
+
+            @include mobile-s {
+                &:not(:last-child) {
+                    border-right: var(--border-width-light) solid var(--color-dark);
+                }
+            }
+
+            &--chosen {
+                opacity: .8;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

@@ -202,9 +202,10 @@ svg * {
   --color-dark: #000;
   --color-grey: #e0e0e0;
   --color-grey-alt: #646464;
-  --color-grey-alt-2: #b7b7b7;
   --color-light-grey: #f9f9f9;
   --color-light-grey-alt: #fffdfd;
+  --color-blue: #272DC3;
+  --color-dark-blue: #1a1d82;
   --border: 3px solid black;
   --border-width-black: 7px;
   --border-width-verybold: 5px;
@@ -273,6 +274,7 @@ svg * {
 }
 @media (max-width: 480px) {
   :root {
+    --border-width-verybold: 2px;
     --button-height: 26px;
     --button-height-large: 29px;
   }
