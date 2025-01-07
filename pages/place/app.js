@@ -65,13 +65,14 @@ function setLanguage(choise) {
 
 
 
-const explanatoryButton = document.getElementById('explanatoryButton')
-const explanatoryBox = document.getElementById('explanatoryBox')
-explanatoryButton.addEventListener('click', () => {
+const addressInfoTitle = document.querySelectorAll('.place__description-item-title')[3]
+addressInfoTitle.addEventListener('click', () => {
+    const explanatoryBox = document.getElementById('explanatoryBox')
     explanatoryBox.classList.toggle('place__description-explanation--shown')
 })
 
 window.addEventListener('click', ev => {
+    const explanatoryBox = document.getElementById('explanatoryBox')
     const isShown = explanatoryBox.classList.contains('place__description-explanation--shown')
     const isExplanatoryButtonClicked = ev.target.closest('#explanatoryButton')
 
