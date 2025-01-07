@@ -165,8 +165,8 @@
             @include mobile-s {
                 --bulletSize: 5px;
                 --bulletMarginRight: 7px;
-            }            
-    
+            }
+
             &-title {
                 position: relative;
                 font-weight: bold;
@@ -176,11 +176,11 @@
                     position: absolute;
                     top: 50%;
                     translate: calc(-1 * var(--bulletOffsetX)) -50%;
-    
+
                     width: var(--bulletSize);
                     height: var(--bulletSize);
                     aspect-ratio: 1;
-    
+
                     border-radius: 50%;
                     background-color: var(--color-dark);
                 }
@@ -195,7 +195,48 @@
             }
         }
 
-        
+        &-explanatory {
+            position: relative;
+        }
+
+        &-explanation {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            translate: -50% -100%;
+
+            opacity: 0;
+            visibility: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 250%;
+
+            font-family: var(--font-family-base);
+
+            border: var(--border-width-bold) solid var(--color-dark);
+            border-radius: var(--border-radius-double);
+            padding: 20px 30px;
+
+            color: var(--color-blue);
+            background-color: var(--color-light-grey);
+            transition-duration: inherit; // --transition-duration
+
+            @include tablet {
+                padding: 15px 25px;
+            }
+
+            @include mobile {
+                padding: 10px 20px;
+                min-width: 230%;
+            }
+
+            &--shown {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
     }
 
     &__body {
@@ -206,7 +247,7 @@
     }
 
     &__text {
-        --marginBottom: 24px; 
+        --marginBottom: 24px;
 
         max-width: 1300px;
 
@@ -217,7 +258,7 @@
         }
 
         @include tablet {
-            --marginBottom: 17px; 
+            --marginBottom: 17px;
 
             max-width: 650px;
             text-align: center;
@@ -234,7 +275,7 @@
 
             max-width: 330px;
         }
-        
+
         &-title {
             font-weight: bold;
         }

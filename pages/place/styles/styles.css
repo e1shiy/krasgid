@@ -987,6 +987,43 @@ h4, .h4 {
 .place__description-item-info--offset {
   margin-left: 1em;
 }
+.place__description-explanatory {
+  position: relative;
+}
+.place__description-explanation {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  translate: -50% -100%;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 250%;
+  font-family: var(--font-family-base);
+  border: var(--border-width-bold) solid var(--color-dark);
+  border-radius: var(--border-radius-double);
+  padding: 20px 30px;
+  color: var(--color-blue);
+  background-color: var(--color-light-grey);
+  transition-duration: inherit;
+}
+@media (max-width: 1023px) {
+  .place__description-explanation {
+    padding: 15px 25px;
+  }
+}
+@media (max-width: 767px) {
+  .place__description-explanation {
+    padding: 10px 20px;
+    min-width: 230%;
+  }
+}
+.place__description-explanation--shown {
+  visibility: visible;
+  opacity: 1;
+}
 @media (max-width: 1023px) {
   .place__body {
     display: flex;
