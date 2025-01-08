@@ -66,6 +66,7 @@ function setLanguage(choise) {
 
 
 const addressInfoTitle = document.querySelectorAll('.place__description-item-title')[3]
+
 addressInfoTitle.addEventListener('click', () => {
     const explanatoryBox = document.getElementById('explanatoryBox')
     explanatoryBox.classList.toggle('place__description-explanation--shown')
@@ -79,4 +80,86 @@ window.addEventListener('click', ev => {
     if (isShown && !isExplanatoryButtonClicked) {
         explanatoryBox.classList.toggle('place__description-explanation--shown')
     }
+})
+
+
+
+const imageWrapper = document.querySelector('.place__slider-image-wrapper')
+const image = document.querySelector('.place__slider-image')
+
+const slider = document.querySelector('.slider')
+const sliderButtonUp = slider.querySelector('.slider__button-up')
+const sliderButtonDown = slider.querySelector('.slider__button-down')
+const sliderImageWrappers = slider.querySelectorAll('.slider__images-item')
+let sliderChosenImageWrapper = slider.querySelector('.slider__images-item--chosen')
+
+const sliderScrollImageIntoView = (number) => {
+    const isMobile = window.innerWidth <= 767 
+    const targetImage = slider.querySelector(`[data-number="${number}"]`)
+
+    const targetImageTop = isMobile ? targetImage.getBoundingClientRect().left : targetImage.getBoundingClientRect().top
+    const targetImageBottom = isMobile ? targetImage.getBoundingClientRect().right : targetImage.getBoundingClientRect().bottom
+    const containerTop = isMobile ? sliderButtonUp.getBoundingClientRect().right : sliderButtonUp.getBoundingClientRect().bottom
+    const containerBottom = isMobile ? sliderButtonDown.getBoundingClientRect().left : sliderButtonDown.getBoundingClientRect().top
+
+    let offset = isMobile ? -1 : 0 // -1 cuz of borders
+    if (targetImageTop < containerTop) {
+        offset += containerTop - targetImageTop 
+        isMobile ? slider.scrollLeft -= offset : slider.scrollTop -= offset
+    } else if (targetImageBottom > containerBottom) {
+        offset += targetImageBottom - containerBottom
+        isMobile ? slider.scrollLeft += offset : slider.scrollTop += offset
+    }
+}
+
+const wrapperChangeImage = (source) => {
+    image.classList.add('place__slider-image--fade-out')
+    setTimeout(() => {
+        requestAnimationFrame(() => {
+            image.src = source;
+            requestAnimationFrame(() => {
+                image.classList.remove('place__slider-image--fade-out')
+            });
+        });
+    }, 100);
+}
+
+const sliderSelectImage = (number) => {
+    const previousNumber = Number(sliderChosenImageWrapper.dataset.number)
+
+    sliderChosenImageWrapper.classList.remove('slider__images-item--chosen')
+    sliderChosenImageWrapper = slider.querySelector(`[data-number="${number}"]`)
+    sliderChosenImageWrapper.classList.add('slider__images-item--chosen')
+
+    if (number === 6) { sliderButtonDown.classList.add('slider__button-down--disabled') }
+    else if (number === 1) { sliderButtonUp.classList.add('slider__button-up--disabled') }
+    if (previousNumber === 6) { sliderButtonDown.classList.remove('slider__button-down--disabled') }
+    else if (previousNumber === 1) { sliderButtonUp.classList.remove('slider__button-up--disabled') }
+
+    wrapperChangeImage(sliderChosenImageWrapper.querySelector('img').src)
+    sliderScrollImageIntoView(number)
+}
+
+sliderImageWrappers.forEach(wrapper => {
+    wrapper.addEventListener('click', () => {
+        const number = Number(wrapper.dataset.number)
+        if (number === sliderChosenImageWrapper.dataset.number) { return }
+        sliderSelectImage(number)
+    })
+})
+
+sliderButtonUp.addEventListener('click', () => {
+    const isDisabled = sliderButtonUp.classList.contains('slider__button-up--disabled')
+    if (isDisabled) { return }
+
+    const number = Number(sliderChosenImageWrapper.dataset.number)
+    sliderSelectImage(number - 1)
+})
+
+sliderButtonDown.addEventListener('click', () => {
+    const isDisabled = sliderButtonDown.classList.contains('slider__button-down--disabled')    
+    if (isDisabled) { return }
+
+    const number = Number(sliderChosenImageWrapper.dataset.number)
+    sliderSelectImage(number + 1)
 })

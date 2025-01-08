@@ -11,8 +11,8 @@
     border-radius: var(--border-radius-double);
     background-color: var(--color-dark);
 
-    overflow: scroll; // temp
-    // overflow: hidden;
+    overflow: scroll;
+    scroll-behavior: smooth;
 
     @include desktop {
         --sliderWidth: 91px;
@@ -79,6 +79,19 @@
 
         &:active {
             background-color: var(--sliderButtonActiveColor);
+        }
+
+        &--disabled {
+            background-color: var(--color-grey-alt);
+            cursor: not-allowed;
+
+            @include hover {
+                background-color: var(--color-grey-alt);
+            }
+
+            &:active {
+                background-color: var(--color-grey-alt);
+            }
         }
 
         svg {

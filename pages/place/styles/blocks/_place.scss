@@ -32,7 +32,6 @@
     }
 
     &__slider {
-        flex-shrink: 0; // temp
         display: flex;
         justify-content: center;
         align-items: center;
@@ -55,15 +54,20 @@
             width: 100%;
             height: 100%;
             aspect-ratio: 16 / 9;
+            transition-duration: var(--transition-duration);
+
+            &--fade-out {
+                opacity: 0;
+            }
 
             &-wrapper {
-                flex-shrink: 0; // temp
                 // width: 580px;
                 aspect-ratio: 580 / 331;
                 height: 331px;
 
                 border: var(--border-width-verybold) solid var(--color-dark);
                 border-radius: var(--border-radius-large);
+                background-color: var(--color-dark);
                 overflow: hidden;
 
                 @include desktop {
