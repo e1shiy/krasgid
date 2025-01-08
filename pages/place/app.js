@@ -143,7 +143,7 @@ const sliderSelectImage = (number) => {
 sliderImageWrappers.forEach(wrapper => {
     wrapper.addEventListener('click', () => {
         const number = Number(wrapper.dataset.number)
-        if (number === sliderChosenImageWrapper.dataset.number) { return }
+        if (number == sliderChosenImageWrapper.dataset.number) { return }
         sliderSelectImage(number)
     })
 })
