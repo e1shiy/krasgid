@@ -1,0 +1,15 @@
+.section {
+    --section-padding-y: 40px;
+
+    padding-block: var(--section-padding-y);
+
+    @include mobile {
+        --section-padding-y: 30px;
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

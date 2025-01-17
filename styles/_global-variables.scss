@@ -25,6 +25,7 @@
 
     --button-height: 44px;
     --button-height-large: 63px;
+    --input-height: 65px;
 
     --from-to-input-width: 60px;
 
@@ -50,6 +51,10 @@
         --border-width-verybold: 4px;
 
         --border-radius-huge: 70px;
+
+        --input-height: 60px;
+
+        --header-padding-x: 50px;
     }
 
     @include tablet {
@@ -63,8 +68,10 @@
         
         --button-height: 38px;
         --button-height-large: 57px;
+        --input-height: 50px;
         
-        --header-padding-x: calc(50px + 80 * ((100vw - 767px) / 257));
+        // --header-padding-x: calc(50px + 80 * ((100vw - 767px) / 257));
+        --header-padding-x: calc(10px + 90 * ((100vw - 767px) / 257));
         --header-padding-top: 40px;
     }
     
@@ -83,6 +90,7 @@
 
         --button-height: 29px;
         --button-height-large: 32px;
+        --input-height: 35px;
 
         --header-padding-x: 0px;
         --header-padding-top: 30px;
@@ -93,5 +101,6 @@
 
         --button-height: 26px;
         --button-height-large: 29px;
+        --input-height: 30px;
     }
 }

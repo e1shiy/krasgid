@@ -5,6 +5,7 @@ function setLanguage(choise) {
         title: 'KrasGid | Place',
         places: 'Places',
         aboutUs: 'About us',
+        feedback: 'Feedback',
         filterNames: ['Working days', 'Opening hours', 'Entry cost', 'Address'],
         filterValues: ['dolor sit amet', 'dolor sit', 'dolor sit amet consectetur. Elementum', '78 dolor sit amet consecteur elementum'],
         ifAvailable: 'if available',
@@ -20,6 +21,7 @@ function setLanguage(choise) {
         title: 'КрасГид | Место',
         places: 'Места',
         aboutUs: 'О нас',
+        feedback: 'Обратная связь',
         filterNames: ['Рабочие дни', 'Часы работы', 'Стоимость входа', 'Адрес'],
         filterValues: ['dolor sit amet', 'dolor sit', 'dolor sit amet consectetur. Elementum', '78 dolor sit amet consecteur elementum'],
         ifAvailable: 'при наличии',
@@ -41,6 +43,7 @@ function setLanguage(choise) {
 
     document.getElementById('placesButton').querySelector('p').textContent = language.places
     document.getElementById('aboutUsButton').querySelector('p').textContent = language.aboutUs
+    document.getElementById('feedbackButton').querySelector('p').textContent = language.feedback
 
     document.querySelectorAll('.place__description-item-title').forEach((title, index) => {
         if (index === 3) {

@@ -5,6 +5,7 @@ function setLanguage(choise) {
         title: 'KrasGid | Places',
         places: 'Places',
         aboutUs: 'About us',
+        feedback: 'Feedback',
         filtersTitle: 'Filters',
         district: 'District',
         entryCost: 'Entry cost',
@@ -12,24 +13,11 @@ function setLanguage(choise) {
         isRoundTheClock: 'Around the clock',
         resetAll: 'Reset filters',
         reset: 'Reset',
-        soviet: 'Soviet',
-        october: 'October',
-        central: 'Central',
-        lenins: 'Lenins',
-        kirovs: 'Kirovs',
-        sverdlovs: 'Sverdlovs',
-        railway: 'Railway',
-        outside: 'Outside the city',
+        districts: ['Soviet', 'October', 'Central', 'Lenins', 'Kirovs', 'Sverdlovs', 'Railway', 'Outside the city'],
+        weekdays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         free: 'Free',
         from: 'from',
         to: 'to',
-        monday: 'Monday',
-        tuesday: 'Tuesday',
-        wednesday: 'Wednesday',
-        thursday: 'Thursday',
-        friday: 'Friday',
-        saturday: 'Saturday',
-        sunday: 'Sunday',
         search: 'search'
     }
 
@@ -37,6 +25,7 @@ function setLanguage(choise) {
         title: 'КрасГид | Места',
         places: 'Места',
         aboutUs: 'О нас',
+        feedback: 'Обратная связь',
         filtersTitle: 'Фильтры',
         district: 'Район',
         entryCost: 'Стоимость входа',
@@ -44,24 +33,11 @@ function setLanguage(choise) {
         isRoundTheClock: 'Круглосуточно',
         resetAll: 'Сбросить фильтры',
         reset: 'Сбросить',
-        soviet: 'Советский',
-        october: 'Октябрьский',
-        central: 'Центральный',
-        lenins: 'Ленинский',
-        kirovs: 'Кировский',
-        sverdlovs: 'Свердловский',
-        railway: 'Железнодорожный',
-        outside: 'За городом',
+        districts: ['Советский', 'Октябрьский', 'Центральный', 'Ленинский', 'Кировский', 'Свердловский', 'Железнодорожный', 'За городом'],
+        weekdays: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
         free: 'Бесплатно',
         from: 'от',
         to: 'до',
-        monday: 'Понедельник',
-        tuesday: 'Вторник',
-        wednesday: 'Среда',
-        thursday: 'Четверг',
-        friday: 'Пятница',
-        saturday: 'Суббота',
-        sunday: 'Воскресенье',
         search: 'поиск'
     }
 
@@ -75,6 +51,7 @@ function setLanguage(choise) {
 
     document.getElementById('placesButton').querySelector('p').textContent = language.places
     document.getElementById('aboutUsButton').querySelector('p').textContent = language.aboutUs
+    document.getElementById('feedbackButton').querySelector('p').textContent = language.feedback
 
     document.querySelector('.filters__title').textContent = language.filtersTitle
     document.getElementById('districtFilterButton').textContent = language.district
@@ -84,23 +61,26 @@ function setLanguage(choise) {
     document.getElementById('resetFiltersButton').textContent = language.resetAll
 
     document.querySelectorAll('.filter__reset-button').forEach(resetButton => resetButton.textContent = language.reset)
-    document.getElementById('sovietDistrictInput').closest('label').querySelector('p').textContent = language.soviet
-    document.getElementById('octoberDistrictInput').closest('label').querySelector('p').textContent = language.october
-    document.getElementById('centralDistrictInput').closest('label').querySelector('p').textContent = language.central
-    document.getElementById('leninsDistrictInput').closest('label').querySelector('p').textContent = language.lenins
-    document.getElementById('kirovsDistrictInput').closest('label').querySelector('p').textContent = language.kirovs
-    document.getElementById('sverdlovsDistrictInput').closest('label').querySelector('p').textContent = language.sverdlovs
-    document.getElementById('railwayDistrictInput').closest('label').querySelector('p').textContent = language.railway
-    document.getElementById('outsideTheCityDistrictInput').closest('label').querySelector('p').textContent = language.outside
+    document.querySelectorAll('.filter').forEach((filter, filterIndex) => {
+        if (filterIndex === 1) { return }
+        filter.querySelectorAll('.checkbox p').forEach((paragraph, paragraphIndex) => {
+            if (filterIndex === 0) {
+                paragraph.textContent = language.districts[paragraphIndex]
+            } else if (filterIndex === 2) {
+                paragraph.textContent = language.weekdays[paragraphIndex]
+            }
+        })
+    })
 
     document.getElementById('isFreeInput').closest('label').querySelector('p').textContent = language.free
     document.querySelector('.from-to-input__from-wrapper').setAttribute('data-before', language.from)
     document.querySelector('.from-to-input__to-wrapper').setAttribute('data-before', language.to)
 
+    document.get
+
     document.querySelector('.search__input').setAttribute('placeholder', language.search)
 
     document.querySelectorAll('.place').forEach(place => {
-        console.log(place.dataset.number, places[place.dataset.number])
         if (choise === 'english') { language = Object.assign({}, places[place.dataset.number].english) }
         else if (choise === 'русский') { language = Object.assign({}, places[place.dataset.number].russian) }
 

@@ -5,6 +5,7 @@ function setLanguage(choise) {
         title: 'KrasGid | About us',
         places: 'Places',
         aboutUs: 'About us',
+        feedback: 'Feedback',
         introTextFirstParagraph: 'KrasGid is your personal assistant for exploring all the beauties of Krasnoyarsk.',
         introTextSecondParagraph: 'With the help of our service, you will be able to learn not only about the beautiful and interesting places of the city, but also about the ways to get there and the cost of the hike.',
         introTextThirdParagraph: 'On this page there is a guide video, after watching which, it will become a little easier for you to get used to the functionality of KrasGid!',
@@ -16,6 +17,7 @@ function setLanguage(choise) {
         title: 'КрасГид | О нас',
         places: 'Места',
         aboutUs: 'О нас',
+        feedback: 'Обратная связь',
         introTextFirstParagraph: 'КрасГид - ваш персональный помощник по изучению всех красот города Красноярска.',
         introTextSecondParagraph: 'С помощью нашего сервиса вы сможете узнать не только о красивых и интересных местах города, но и о способах туда добраться и стоимости похода.',
         introTextThirdParagraph: 'На этой странице есть обучающий ролик, посмотрев который, вам станет немного проще освоиться в функционале КрасГида!',
@@ -33,6 +35,7 @@ function setLanguage(choise) {
 
     document.getElementById('placesButton').querySelector('p').textContent = language.places
     document.getElementById('aboutUsButton').querySelector('p').textContent = language.aboutUs
+    document.getElementById('feedbackButton').querySelector('p').textContent = language.feedback
 
     document.getElementById('introTextFirstParagraph').textContent = language.introTextFirstParagraph
     document.getElementById('introTextSecondParagraph').textContent = language.introTextSecondParagraph

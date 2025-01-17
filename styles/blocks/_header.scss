@@ -14,12 +14,12 @@
             border: var(--border-width-light) solid var(--color-dark);
             background-color: var(--color-light-grey);
 
-            padding: 35px 30px;
+            padding: 35px 30px 20px;
             gap: 30px;
         }
 
         @include mobile-s {
-            padding: 25px 20px;
+            padding: 25px 20px 15px;
             gap: 20px;
         }
     }
@@ -44,14 +44,28 @@
     }
 
     &__menu {
-        flex-shrink: 0;
-
         &-list {
+            position: relative;
             display: flex;
+            justify-content: center;
             gap: 40px;
 
+            @include desktop {
+                gap: 20px;
+            }
+
             @include tablet {
-                gap: 25px;
+                // gap: 25px;
+                gap: 15px;
+            }
+
+            @include mobile {
+                --buttonsVerticalGap: 15px;
+                padding-bottom: calc(var(--button-height) + var(--buttonsVerticalGap));
+            }
+
+            @include mobile-s {
+                --buttonsVerticalGap: 10px;
             }
         }
 
@@ -60,7 +74,18 @@
                 &:nth-child(2) {
                     order: 3;
                 }
-    
+                
+                &:nth-child(3) {
+                    order: 4;
+                    position: absolute;
+                    translate: 0 calc(100% + var(--buttonsVerticalGap));
+                    width: 100%;
+
+                    & button {
+                        width: 100%;
+                    }
+                }
+                
                 &:last-child {
                     order: 2;
                 }

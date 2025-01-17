@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/icons/tab-icon.png">
+    <title>КрасГид | Обратная связь</title>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="../../app.js" defer></script>
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="header__inner container">
+            <a href="../about/index.html" class="header__logo">
+                <img src="../../images/logo.png" alt="KrasGid" class="logo" width="193" height="94" loading="lazy">
+            </a>
+
+            <nav class="header__menu">
+                <ul class="header__menu-list">
+                    <li class="header__menu-item">
+                        <a href="../places/index.html" class="header__menu-link">
+                            <button class="header__menu-button button cursor-pointer" id="placesButton" type="button">
+                                <p>Места</p>
+                            </button>
+                        </a>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <a href="../about/index.html" class="header__menu-link">
+                            <button class="header__menu-button button cursor-pointer" id="aboutUsButton" type="button">
+                                <p>О нас</p>
+                            </button>
+                        </a>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <button class="header__menu-button button button--active" id="feedbackButton" type="button">
+                            <p>Обратная связь</p>
+                        </button>
+                    </li>
+
+                    <li class="header__menu-item">
+                        <div class="header__menu-dropmenu dropmenu" data-number="1">
+                            <button class="dropmenu__header">
+                                <div class="dropmenu__header-title">
+                                    <p>Language</p>
+                                </div>
+
+                                <img src="../../images/icons/planet.png" alt="" class="dropmenu__header-icon" width="16"
+                                    height="16" loading="lazy">
+                            </button>
+
+                            <div class="dropmenu__body">
+                                <ul class="dropmenu__body-list">
+                                    <li class="dropmenu__body-item">
+                                        <button class="dropmenu__body-option button">
+                                            <p>English</p>
+                                        </button>
+                                    </li>
+
+                                    <li class="dropmenu__body-item">
+                                        <button class="dropmenu__body-option button">
+                                            <p>Русский</p>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="section container">
+            <div class="section__body">
+                <div class="feedback">
+                    <div class="feedback__intro">
+                        <p class="h2">
+                            Если вы хотите предложить идеи для будущих нововведений или хотите сообщить об ошибках на сайте, 
+                            то можете сделать это прямо здесь, заполнив форму и написав сообщение. Это очень поможет развитию сайта.
+                            Спасибо за вашу отзывчивость!
+                        </p>
+                    </div>
+
+                    <form class="feedback__form" name="feedback">
+                        <div class="feedback__form-contacts">
+                            <div class="feedback__form-input-wrapper">
+                                <input class="feedback__form-input" id="inputName" type="text" name="firstName" autocomplete="given-name">
+                                <label for="inputName">
+                                    <p>имя</p>
+                                </label>
+                            </div>
+                            
+                            <div class="feedback__form-input-wrapper">
+                                <input type="email" name="email" id="inputEmail" class="feedback__form-input">
+                                <label for="inputEmail">
+                                    <p>почта</p>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="feedback__form-message-wrapper">
+                            <p class="feedback__form-message-title h3">сообщение</p>
+                            <textarea class="feedback__form-message" id="messageTextArea" name="message" required></textarea>
+                        </div>
+
+                        <input type="submit" value="отправить" class="feedback__form-button button button--large h3"></input>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

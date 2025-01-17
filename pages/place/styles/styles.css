@@ -220,6 +220,7 @@ svg * {
   --border-radius-mini: 6px;
   --button-height: 44px;
   --button-height-large: 63px;
+  --input-height: 65px;
   --from-to-input-width: 60px;
   --header-padding-x: 100px;
   --header-padding-top: 60px;
@@ -238,6 +239,8 @@ svg * {
     --border-width-black: 6px;
     --border-width-verybold: 4px;
     --border-radius-huge: 70px;
+    --input-height: 60px;
+    --header-padding-x: 50px;
   }
 }
 @media (max-width: 1023px) {
@@ -250,7 +253,8 @@ svg * {
     --border-radius: 8px;
     --button-height: 38px;
     --button-height-large: 57px;
-    --header-padding-x: calc(50px + 80 * ((100vw - 767px) / 257));
+    --input-height: 50px;
+    --header-padding-x: calc(10px + 90 * ((100vw - 767px) / 257));
     --header-padding-top: 40px;
   }
 }
@@ -268,6 +272,7 @@ svg * {
     --border-radius-mini: 4px;
     --button-height: 29px;
     --button-height-large: 32px;
+    --input-height: 35px;
     --header-padding-x: 0px;
     --header-padding-top: 30px;
   }
@@ -277,6 +282,7 @@ svg * {
     --border-width-verybold: 2px;
     --button-height: 26px;
     --button-height-large: 29px;
+    --input-height: 30px;
   }
 }
 
@@ -463,6 +469,10 @@ h4, .h4 {
 
 .cursor-pointer {
   cursor: pointer !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
 }
 
 .fw-500 {
@@ -714,13 +724,13 @@ h4, .h4 {
     border-radius: var(--border-radius-big);
     border: var(--border-width-light) solid var(--color-dark);
     background-color: var(--color-light-grey);
-    padding: 35px 30px;
+    padding: 35px 30px 20px;
     gap: 30px;
   }
 }
 @media (max-width: 480px) {
   .header__inner {
-    padding: 25px 20px;
+    padding: 25px 20px 15px;
     gap: 20px;
   }
 }
@@ -743,21 +753,45 @@ h4, .h4 {
     height: 50px;
   }
 }
-.header__menu {
-  flex-shrink: 0;
-}
 .header__menu-list {
+  position: relative;
   display: flex;
+  justify-content: center;
   gap: 40px;
+}
+@media (max-width: 1280px) {
+  .header__menu-list {
+    gap: 20px;
+  }
 }
 @media (max-width: 1023px) {
   .header__menu-list {
-    gap: 25px;
+    gap: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .header__menu-list {
+    --buttonsVerticalGap: 15px;
+    padding-bottom: calc(var(--button-height) + var(--buttonsVerticalGap));
+  }
+}
+@media (max-width: 480px) {
+  .header__menu-list {
+    --buttonsVerticalGap: 10px;
   }
 }
 @media (max-width: 767px) {
   .header__menu-item:nth-child(2) {
     order: 3;
+  }
+  .header__menu-item:nth-child(3) {
+    order: 4;
+    position: absolute;
+    translate: 0 calc(100% + var(--buttonsVerticalGap));
+    width: 100%;
+  }
+  .header__menu-item:nth-child(3) button {
+    width: 100%;
   }
   .header__menu-item:last-child {
     order: 2;
