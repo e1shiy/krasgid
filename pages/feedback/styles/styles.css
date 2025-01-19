@@ -206,6 +206,8 @@ svg * {
   --color-light-grey-alt: #fffdfd;
   --color-blue: #272DC3;
   --color-dark-blue: #1a1d82;
+  --color-red: rgb(255, 92, 92);
+  --color-green: rgb(68, 212, 68);
   --border: 3px solid black;
   --border-width-black: 7px;
   --border-width-verybold: 5px;
@@ -228,10 +230,13 @@ svg * {
   --container-padding-x: 20px;
   --content-padding-bottom: 50px;
   --box-shadow: 0 0 30px -2px var(--color-dark);
+  --box-shadow-small-red: 0 0 10px -2px var(--color-red);
+  --box-shadow-small-green: 0 0 10px -2px var(--color-green);
   --text-shadow: 0 0 15px var(--color-light);
   --text-shadow-thin: 0 0 5px var(--color-light);
   --font-family-base: "Montserrat", sans-serif;
   --font-family-alt: "Montserrat Alternates", sans-serif;
+  --feedback-form-sending-text: "отправляем...";
   --transition-duration: .2s;
 }
 @media (max-width: 1280px) {
@@ -900,14 +905,37 @@ h4, .h4 {
   border-radius: var(--border-radius);
   text-align: center;
   background-color: transparent;
+  transition-duration: var(--transition-duration);
 }
-.feedback__form-input:focus {
+.feedback__form-input:not(:-moz-placeholder-shown) {
   outline: none;
 }
-.feedback__form-input:focus + label {
+.feedback__form-input:focus, .feedback__form-input:not(:placeholder-shown) {
+  outline: none;
+}
+.feedback__form-input:not(:-moz-placeholder-shown) + label {
   top: 0;
   left: calc(var(--border-radius) + var(--labelOffset));
   translate: 0 -100%;
+}
+.feedback__form-input:focus + label, .feedback__form-input:not(:placeholder-shown) + label {
+  top: 0;
+  left: calc(var(--border-radius) + var(--labelOffset));
+  translate: 0 -100%;
+}
+.feedback__form-input--failed {
+  box-shadow: var(--box-shadow-small-red);
+  border-color: var(--color-red);
+}
+.feedback__form-input--failed + label {
+  color: var(--color-red);
+}
+.feedback__form-input--succeed {
+  box-shadow: var(--box-shadow-small-green);
+  border-color: var(--color-green);
+}
+.feedback__form-input--succeed + label {
+  color: var(--color-green);
 }
 .feedback__form-input-wrapper {
   position: relative;
@@ -929,9 +957,20 @@ h4, .h4 {
   border-radius: var(--border-radius-double);
   padding: 20px;
   resize: none;
+  transition-duration: var(--transition-duration);
 }
 .feedback__form-message-wrapper {
   width: 100%;
+}
+.feedback__form-message-title {
+  color: var(--color-dark);
+  transition-duration: var(--transition-duration);
+}
+.feedback__form-message-title:has(+ .feedback__form-message--failed) {
+  color: var(--color-red);
+}
+.feedback__form-message-title:has(+ .feedback__form-message--succeed) {
+  color: var(--color-green);
 }
 @media (max-width: 1023px) {
   .feedback__form-message {
@@ -949,6 +988,14 @@ h4, .h4 {
 .feedback__form-message::-webkit-scrollbar {
   display: none;
 }
+.feedback__form-message--failed {
+  box-shadow: var(--box-shadow-small-red);
+  border-color: var(--color-red);
+}
+.feedback__form-message--succeed {
+  box-shadow: var(--box-shadow-small-green);
+  border-color: var(--color-green);
+}
 .feedback__form-button {
   font-weight: 600;
   border-width: var(--border-width-regular);
@@ -957,4 +1004,42 @@ h4, .h4 {
   .feedback__form-button {
     font-weight: 400;
   }
+}
+
+.form-overlay {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+.form-overlay:modal {
+  max-width: 100%;
+  max-height: 100%;
+}
+.form-overlay__body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.form-overlay__sending, .form-overlay__sent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  max-width: 75%;
+  text-align: center;
+  border: var(--border-width-regular) solid var(--color-dark);
+  border-radius: var(--border-radius-double);
+  background-color: var(--color-light-grey-alt);
+  padding: 1.5em 3em;
 }/*# sourceMappingURL=styles.css.map */

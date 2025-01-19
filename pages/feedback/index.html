@@ -87,17 +87,17 @@
                         </p>
                     </div>
 
-                    <form class="feedback__form" name="feedback">
+                    <form class="feedback__form feedback__form--sent" name="feedback">
                         <div class="feedback__form-contacts">
                             <div class="feedback__form-input-wrapper">
-                                <input class="feedback__form-input" id="inputName" type="text" name="firstName" autocomplete="given-name">
+                                <input class="feedback__form-input" id="inputName" type="text" name="firstName" autocomplete="given-name" placeholder="">
                                 <label for="inputName">
                                     <p>имя</p>
                                 </label>
                             </div>
                             
                             <div class="feedback__form-input-wrapper">
-                                <input type="email" name="email" id="inputEmail" class="feedback__form-input">
+                                <input class="feedback__form-input" type="email" name="email" id="inputEmail" placeholder="">
                                 <label for="inputEmail">
                                     <p>почта</p>
                                 </label>
@@ -106,15 +106,36 @@
 
                         <div class="feedback__form-message-wrapper">
                             <p class="feedback__form-message-title h3">сообщение</p>
-                            <textarea class="feedback__form-message" id="messageTextArea" name="message" required></textarea>
+                            <textarea class="feedback__form-message" id="messageTextArea" name="message"></textarea>
                         </div>
 
-                        <input type="submit" value="отправить" class="feedback__form-button button button--large h3"></input>
+                        <button type="submit" class="feedback__form-button button button--large">
+                            <p class="h3">отправить</p>
+                        </input>
                     </form>
                 </div>
             </div>
         </section>
     </main>
+
+    <dialog class="form-overlay">
+        <div class="form-overlay__body">
+            <div class="form-overlay__sending">
+                <p class="form-overlay__sending-message h2">
+                    отправляем...
+                </p>
+            </div>
+            <div class="form-overlay__sent visually-hidden">
+                <p class="form-overlay__sent-result h2">сообщение успешно отправлено!</p>
+                <form method="dialog">
+                    <button class="form-overlay__sent-button button" type="submit">
+                        <p>ОК</p>
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    </dialog>
 
 </body>
 </html>

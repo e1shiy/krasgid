@@ -7,6 +7,8 @@
     --color-light-grey-alt: #fffdfd;
     --color-blue: #272DC3;
     --color-dark-blue: #1a1d82;
+    --color-red: rgb(255, 92, 92);
+    --color-green: rgb(68, 212, 68);
 
     --border: 3px solid black;
 
@@ -38,11 +40,14 @@
     --content-padding-bottom: 50px;
 
     --box-shadow: 0 0 30px -2px var(--color-dark);
+    --box-shadow-small-red: 0 0 10px -2px var(--color-red);
+    --box-shadow-small-green: 0 0 10px -2px var(--color-green);
     --text-shadow: 0 0 15px var(--color-light);
     --text-shadow-thin: 0 0 5px var(--color-light);
 
     --font-family-base: 'Montserrat', sans-serif;
     --font-family-alt: 'Montserrat Alternates', sans-serif;
+    --feedback-form-sending-text: 'отправляем...';
 
     --transition-duration: .2s;
 
