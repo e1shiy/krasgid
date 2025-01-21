@@ -120,7 +120,7 @@ const resetForm = (status) => {
         successMessage = 'the message was sent successfully'
         failedMessage = "couldn't send message :("
     }
-    else if (choise === 'russian') {
+    else if (choise === 'русский') {
         successMessage = 'сообщение успешно отправлено'
         failedMessage = 'не удалось отправить сообщение :('
     }
