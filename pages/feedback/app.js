@@ -6,6 +6,16 @@ function setLanguage(choise) {
         places: 'Places',
         aboutUs: 'About us',
         feedback: 'Feedback',
+        intro: `If you want to suggest ideas for future innovations or want to report bugs on the site,
+                you can do so right here by filling out the form and writing a message. 
+                This will greatly help the development of the site. Thank you for your responsiveness!`,
+        name: 'name',
+        email: 'email',
+        message: 'message',
+        send: 'send',
+        sending: 'sending',
+        sendSuccess: 'the message was sent successfully',
+        sendFailed: "couldn't send message :("
     }
 
     const russian = {
@@ -13,6 +23,16 @@ function setLanguage(choise) {
         places: 'Места',
         aboutUs: 'О нас',
         feedback: 'Обратная связь',
+        intro: `Если вы хотите предложить идеи для будущих нововведений или хотите сообщить об ошибках на сайте, 
+                то можете сделать это прямо здесь, заполнив форму и написав сообщение. 
+                Это очень поможет развитию сайта. Спасибо за вашу отзывчивость!`,
+        name: 'имя',
+        email: 'почта',
+        message: 'сообщение',
+        send: 'отправить',
+        sending: 'отправляем',
+        sendSuccess: 'сообщение успешно отправлено',
+        sendFailed: "не удалось отправить сообщение :("
     }
 
     let language
@@ -26,7 +46,15 @@ function setLanguage(choise) {
     document.getElementById('placesButton').querySelector('p').textContent = language.places
     document.getElementById('aboutUsButton').querySelector('p').textContent = language.aboutUs
     document.getElementById('feedbackButton').querySelector('p').textContent = language.feedback
-} // доделать
+
+    document.querySelector('.feedback__intro').querySelector('p').textContent = language.intro
+    document.querySelector('.feedback__form-input[name="firstName"] + label').querySelector('p').textContent = language.name
+    document.querySelector('.feedback__form-input[name="email"] + label').querySelector('p').textContent = language.email
+    document.querySelector('.feedback__form-message-title').textContent = language.message
+    document.querySelector('.feedback__form-button').querySelector('p').textContent = language.send
+
+    document.querySelector('.form-overlay__sending-message').textContent = language.sending
+}
 
 
 
@@ -38,12 +66,13 @@ const formSubmitButton = form.querySelector('button[type="submit"]')
 const formOverlay = document.querySelector('.form-overlay')
 const formOverlaySending = formOverlay.querySelector('.form-overlay__sending')
 const formOverlaySent = formOverlay.querySelector('.form-overlay__sent')
+const formOverlaySendingMessage = formOverlay.querySelector('.form-overlay__sending-message')
 const formOverlayMessage = formOverlay.querySelector('.form-overlay__sent-result')
 const formOverlayButton = formOverlay.querySelector('.form-overlay__sent-button')
 
 const formValidate = (name, email, message) => {
     const isNameValid = name => {
-        const syntaxMatch = Boolean(name.match(/^[a-zA-Zа-яА-Я\s-]+$/i))
+        const syntaxMatch = Boolean(name.match(/^[a-zA-Zа-яА-ЯёЁ\s-]+$/i))
         const lengthMatch = name.length < 300
         return syntaxMatch && lengthMatch
     }    
@@ -83,27 +112,27 @@ const formValidate = (name, email, message) => {
     return isNameValid(name) && isEmailValid(email) && isMessageValid(message)
 }
 
-async function sendForm() {
-    const name = nameInput.value
-    const email = emailInput.value
-    const message = messageInput.value
-    
-    const isFormValid = formValidate(name, email, message)
-    if (!isFormValid) { return }
-    
-    const formData = new FormData(form)
-    formOverlay.showModal()
+const resetForm = (status) => {
+    const choise = localStorage.getItem('language')
+    let successMessage
+    let failedMessage
+    if (choise === 'english') {
+        successMessage = 'the message was sent successfully'
+        failedMessage = "couldn't send message :("
+    }
+    else if (choise === 'russian') {
+        successMessage = 'сообщение успешно отправлено'
+        failedMessage = 'не удалось отправить сообщение :('
+    }
 
-    const response = await fetch('sendmail.php', {
-        method: 'POST',
-        body: formData
-    })
-
-    const result =  await response.json()
+    if (status === 'success') {
+        formOverlayMessage.textContent = successMessage
+    } else {
+        formOverlayMessage.textContent = failedMessage
+    }
     
     formOverlaySending.classList.add('visually-hidden')
     formOverlaySent.classList.remove('visually-hidden')
-    formOverlayMessage.textContent = result.message
     
     form.reset()
     nameInput.classList.remove('feedback__form-input--succeed')
@@ -114,9 +143,52 @@ async function sendForm() {
     messageInput.classList.remove('feedback__form-message--failed')
 }
 
-formSubmitButton.addEventListener('click', (event) => {
+async function sendForm() {    
+    const formData = new FormData(form)
+    formOverlay.showModal()
+
+    let count = 0
+    const interval = setInterval(() => {
+        if (count++ === 3) {
+            count -= 4
+            formOverlaySendingMessage.textContent = formOverlaySendingMessage.textContent.substring(0, formOverlaySendingMessage.textContent.length - 3)
+        }
+        else {
+            formOverlaySendingMessage.textContent += '.'
+        }
+    }, 400);
+    
+    const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('failed')), 3000);  // Таймаут через 30 секунд
+    });
+
+    const fetchPromise = fetch('sendmail.php', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.json());
+
+    try {
+        const result = await Promise.race([fetchPromise, timeoutPromise]);
+        clearInterval(interval)
+        return result.status;
+    } catch (error) {
+        clearInterval(interval)
+        return error.message === 'failed' ? 'failed' : 'error';
+    }
+}
+
+formSubmitButton.addEventListener('click', async (event) => {
     event.preventDefault()
-    sendForm()
+
+    const name = nameInput.value
+    const email = emailInput.value
+    const message = messageInput.value
+    
+    const isFormValid = formValidate(name, email, message)
+    if (!isFormValid) { return }
+
+    const status = await sendForm()
+    resetForm(status)
 })
 
 formOverlayButton.addEventListener('click', () => {

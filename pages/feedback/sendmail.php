@@ -31,10 +31,8 @@ try {
     $mail->send();
 
     $response['status'] = 'success';
-    $response['message'] = 'сообщение успешно отправлено!';
 } catch (Exception $e) {
     $response['status'] = 'error: ' . __DIR__ . '../../../vendor';
-    $response['message'] = 'не удалось отправить сообщение :(';
 }
 
 header('Content-Type: application/json');
