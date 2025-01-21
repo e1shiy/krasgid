@@ -1,3 +1,4 @@
+if (!localStorage.getItem('language')) { localStorage.setItem('language', 'русский') }
 if (localStorage.getItem('language') === 'english') { setLanguage('english') }
 
 function setLanguage(choise) {

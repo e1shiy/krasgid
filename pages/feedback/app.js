@@ -1,3 +1,4 @@
+if (!localStorage.getItem('language')) { localStorage.setItem('language', 'русский') }
 if (localStorage.getItem('language') === 'english') { setLanguage('english') }
 
 function setLanguage(choise) {
@@ -30,9 +31,7 @@ function setLanguage(choise) {
         email: 'почта',
         message: 'сообщение',
         send: 'отправить',
-        sending: 'отправляем',
-        sendSuccess: 'сообщение успешно отправлено',
-        sendFailed: "не удалось отправить сообщение :("
+        sending: 'отправляем'
     }
 
     let language
@@ -118,11 +117,11 @@ const resetForm = (status) => {
     let failedMessage
     if (choise === 'english') {
         successMessage = 'the message was sent successfully'
-        failedMessage = "couldn't send message :("
+        failedMessage = "couldn't send message"
     }
     else if (choise === 'русский') {
         successMessage = 'сообщение успешно отправлено'
-        failedMessage = 'не удалось отправить сообщение :('
+        failedMessage = 'не удалось отправить сообщение'
     }
 
     if (status === 'success') {
