@@ -1,7 +1,0 @@
-.section {
-    padding-top: var(--section-padding-y);
-    
-    @include mobile-above {
-        padding-inline: var(--section-padding-x);
-    }
-}
